@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 Project: Lab 2
 Purpose Details: Threading Synchronization
 Course: IST 411
-Author: Team 1 (Kelly Bergamini, William Allwein, Hun Bae, Phillip Berry, Allea McFarlane)
+Author: Team 1 (Kelly Bergamini, William Allwein, Hun Bae, Phillip Berry, Allea McFarlane, Jason Fang)
 Date Developed: 1/24/2023
 Last Date Changed:
 Revision: 1
