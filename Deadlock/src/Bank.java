@@ -32,7 +32,7 @@ public class Bank {
         bankLock.lock();
         try{
             while(accounts[from] < amount){
-                sufficientFunds.wait();
+                sufficientFunds.await();
             }
             System.out.print(Thread.currentThread());
             accounts[from] -= amount;
