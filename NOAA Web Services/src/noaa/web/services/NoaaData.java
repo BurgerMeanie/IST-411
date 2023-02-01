@@ -13,5 +13,20 @@ Revision: 1
 */
 
 class NoaaData {
+   private Metadata metadata;
+    private Results results[];
     
+    public Metadata getMetaData() {
+        return metadata;
+    }
+    public void setMetadata(Metadata metadata) {
+        this.metadata = metadata;
+    }
+    
+    public Results[] getResults() {
+        return results;
+    }
+    public void setResults(Results[] results) {
+        this.results = results;
+    }
 }

@@ -25,8 +25,6 @@ Revision: 1
 public class NOAAWebServices {
 
     
-    
-    
     public static void main(String[] args) {
        
         String accessToken = "ShJOLHmRudsXXUhmOFCRHbLEEFOLwVEd";
@@ -36,7 +34,7 @@ public class NOAAWebServices {
         
         try{
         
-            URL url = new URL("https://geodesy.noaa.gov/api/geoid/meta");
+            URL url = new URL("https://www.ncdc.noaa.gov/cdo-web/api/v2/datacategories?limit=41");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("token", accessToken);
@@ -46,7 +44,7 @@ public class NOAAWebServices {
                     connection.getInputStream()));
             response = br.readLine();
             System.out.println("NOAA had the follwing to say: " + response);    //test line just to see what response has to say. Remove when done.
-            NoaaData noaa = gson.fromJson(response, NoaaData.class);// method that needs to be built in the NoaaData class.
+            //NoaaData noaa = gson.fromJson(response, NoaaData.class);// method that needs to be built in the NoaaData class.
             
         } catch (IOException ex) {
             Logger.getLogger(NOAAWebServices.class.getName()).log(
