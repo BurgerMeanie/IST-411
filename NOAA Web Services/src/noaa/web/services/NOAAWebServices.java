@@ -36,23 +36,33 @@ public class NOAAWebServices {
         
             URL url = new URL("https://www.ncdc.noaa.gov/cdo-web/api/v2/datacategories?limit=41");
             connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
             connection.setRequestProperty("token", accessToken);
-            connection.connect();
                    
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
             response = br.readLine();
-            System.out.println("NOAA had the follwing to say: " + response);    //test line just to see what response has to say. Remove when done.
-            //NoaaData noaa = gson.fromJson(response, NoaaData.class);// method that needs to be built in the NoaaData class.
+            NoaaData noaa = gson.fromJson(response, NoaaData.class);
             
+            System.out.println("Result Set");
+            System.out.println("----------");
+            System.out.printf("%-15s%s\n", "Offset", noaa.getMetaData().getResultSet().getOffset());
+            System.out.printf("%-15s%s\n", "Count", noaa.getMetaData().getResultSet().getCount());
+            System.out.printf("%-15s%s\n", "Limit", noaa.getMetaData().getResultSet().getLimit());
+            System.out.println();
+            
+            int count = 1;
+            for (Results res : noaa.getResults()){
+                System.out.println("Result " + count++);
+                System.out.println("----------");
+                System.out.printf("%-15s%s\n", "Name", res.getName());
+                System.out.printf("%-15s%s\n", "ID", res.getId());
+                System.out.println();
+            }
         } catch (IOException ex) {
             Logger.getLogger(NOAAWebServices.class.getName()).log(
                     Level.SEVERE, null, ex);
         } finally{
-            if (connection != null){
-                connection.disconnect();
-            }
+            connection.disconnect();
         }
     }
 }

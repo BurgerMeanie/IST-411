@@ -13,7 +13,7 @@ Revision: 1
 */
 
 class NoaaData {
-   private Metadata metadata;
+    private Metadata metadata;
     private Results results[];
     
     public Metadata getMetaData() {
