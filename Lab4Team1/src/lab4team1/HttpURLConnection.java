@@ -56,12 +56,7 @@ public class HttpURLConnection {
             ex.printStackTrace();
         }
     }
-    
-    private void sendGet() throws Exception{
-        
-    }
-    
-    private String getResponse(java.net.HttpURLConnection connection){
+     private String getResponse(java.net.HttpURLConnection connection){
         try{
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
@@ -77,5 +72,26 @@ public class HttpURLConnection {
         }
         return "";
     }
+    
+    private void sendGet() throws Exception{
+         String query = 
+      "http://localhost:8080";
+        URL url = new URL(query);
+        java.net.HttpURLConnection connection = (java.net.HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+        
+        int responseCode = connection.getResponseCode();
+        System.out.println("Response Code: " + responseCode);
+        if (responseCode == 200) {
+            String response = getResponse(connection);
+            System.out.println("response: " + 
+                response.toString());
+        } else {
+            System.out.println("Bad Response Code: " + 
+                responseCode);
+        }
+        
+    }
+    
+   
 }
-
